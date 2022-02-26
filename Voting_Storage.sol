@@ -12,17 +12,25 @@ contract VotingStorage is Ownable{
     }
 
     struct Candidate {
-        string _candidate;
-        uint _numVotes;
+        string name;
+        uint numCanVotes;
+        uint8 canId;
     }
 
+    struct Category {
+        string category;
+        Candidate[] candidates;
+        bool open;
+        uint64 catId;
+    }
+
+    Category[] public Categories;
+    uint64 catCounter = 0;
+
     // address => bool --- list of voter addresses registered to site
-    mapping (address => bool) _registry;
-    // address => category => bool --- 1 vote per voter per category
-    mapping (address => mapping(string => bool)) _boolVoter;
-    // category => candidates struct
-    mapping (string => Candidate[]) _categories;
-    mapping (string => bool) _open;
+    mapping (address => bool) public _registry;
+    // address => categoryId => bool --- 1 vote per voter per category
+    mapping (address => mapping(uint => bool)) public _boolVoter;
 
     // total voters registered
     uint64 public _voterCount;
