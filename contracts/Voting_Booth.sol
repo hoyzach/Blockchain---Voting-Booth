@@ -11,7 +11,7 @@ process would need to be queried through a modified register function.
 */
 pragma solidity ^0.8.6;
 
-import "Voting_Storage.sol";
+import "./Voting_Storage.sol";
 
 contract VotingBooth is VotingStorage {
 
