@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Unlicensed
-pragma solidity ^0.8.6;
+pragma solidity ^0.8.0;
 
-import "./node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "./node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract VotingStorage is Ownable{
 
@@ -31,6 +31,8 @@ contract VotingStorage is Ownable{
     mapping (address => bool) public _registry;
     // address => categoryId => bool --- 1 vote per voter per category
     mapping (address => mapping(uint => bool)) public _boolVoter;
+    // categoryId => bool --- categories can only be opened one time
+    mapping (uint64 => bool) public _openedOnce;
 
     // total voters registered
     uint64 public _voterCount;

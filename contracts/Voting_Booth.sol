@@ -9,14 +9,14 @@ This application does not prevent the same entity from creating multiple address
 A separate database with a voter identifcation number obtained through a voter identification verification
 process would need to be queried through a modified register function. 
 */
-pragma solidity ^0.8.6;
+pragma solidity ^0.8.0;
 
 import "./Voting_Storage.sol";
 
 contract VotingBooth is VotingStorage {
 
     function register() public {
-        require(_registry[msg.sender] != true);
+        require(_registry[msg.sender] != true, "This address is already registered");
         _registry[msg.sender] = true;
         _voterCount++;
     }
@@ -24,8 +24,6 @@ contract VotingBooth is VotingStorage {
     function setCategory(string memory _category, string[] memory _candidates) external onlyOwner returns (uint64){
 
         require(_candidates.length <256, "There are too many candidates.");
-        
-        catCounter++;
 
         Categories[catCounter].category = _category;
         Categories[catCounter].catId = catCounter;
@@ -36,16 +34,20 @@ contract VotingBooth is VotingStorage {
             Categories[catCounter].candidates[i].canId = i;
         }
 
-        return catCounter;        
+        catCounter++;
+
+        return catCounter-1;        
     }
 
     function openCategory(uint64 _catId) public onlyOwner {
         require(Categories[_catId].open == false);
+        require(_openedOnce[_catId] == false);
+        _openedOnce[_catId] = true;
         Categories[_catId].open = true;
     }
 
     function closeCategory(uint64 _catId) public onlyOwner {
-        require(Categories[_catId].open != false);
+        require(Categories[_catId].open == true);
         Categories[_catId].open = false;
     }
 
@@ -78,6 +80,4 @@ contract VotingBooth is VotingStorage {
     function getTotalVotes() public view returns(uint){
         return _totalVotes;
     }
-
-
 }
