@@ -13,7 +13,7 @@ contract VotingProxy is VotingStorage {
     }
 
     //update pointer address to new functionality contract
-    function upgrade(address _newFuncAddress) public onlyOwner{
+    function upgrade(address _newFuncAddress) public onlyOwner whenPaused {
         currentFuncAddress = _newFuncAddress;
     }
 

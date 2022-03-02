@@ -28,6 +28,16 @@ describe("VotingBooth", function () {
 
   });
   
+  describe('Pause and Unpause', () => {
+    it("Should properly apply pause function", async function () {
+      let _catId = await votingbooth.setCategory("Animals", ["Cats", "Dogs", "Elephants"]);
+      expect(_catId).to.equal(1);
+    });
+  });
+  
 });
 
-//test onlyOwner
+
+//test onlyOwner -- 1 - does not allow nonowner to setCategory,pause, change owner - 2- transferOwnership works
+//test pause
+//test withdraw
