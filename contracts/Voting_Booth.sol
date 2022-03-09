@@ -5,7 +5,7 @@ Even though voter data is visible on the Ethereum blockchain, this application i
 Additionally, solidity does not allow for functions to be called automatically after a specified period of time,
 therefore this contract needs to use owner privileges to open and close a voting category.   
 The ultimate decentralized voting application would not require owner privileges and would not allow anyone to 
-see voting data as it is collected in order to discourage voting based on current current voting data and to 
+see voting data as it is collected in order to discourage voting based on current voting data and to 
 protect the privacy of the individual voters.
 
 This application does not prevent the same entity from creating multiple address to vote from.
@@ -19,44 +19,55 @@ import "./Voting_Storage.sol";
 
 contract VotingBooth is VotingStorage {
 
-    function register() external {
+    function register() external whenNotPaused {
         require(_registry[msg.sender] != true, "This address is already registered");
         _registry[msg.sender] = true;
         _voterCount++;
     }
 
+
     function setCategory(string memory _category, string[] memory _candidates) external onlyOwner returns (uint64){
 
         require(_candidates.length <256, "There are too many candidates.");
 
-        //categories[_catCounter].push(_category, candidates.push(), false, _catCounter);
+        uint64 currentCatId = _catCounter;
+
         categories.push();
-        categories[_catCounter].name = _category;
-        categories[_catCounter].catId = _catCounter;
-        categories[_catCounter].candidates.push();
+        categories[currentCatId].name = _category;
+        categories[currentCatId].catId = currentCatId;
 
         for(uint8 i = 0; i < _candidates.length; i++) {
-            //categories[_catCounter].candidates[i].push(_candidates[i], 0, i);
-            categories[_catCounter].candidates[i].name = _candidates[i];
-            categories[_catCounter].candidates[i].numCanVotes = 0;
-            categories[_catCounter].candidates[i].canId = i;
+            categories[currentCatId].candidates.push(Candidate(_candidates[i], 0, i));
         }
 
         _catCounter++;
 
-        return _catCounter;        
+        return currentCatId;        
     }
 
-    function openCategory(uint64 _catId) external onlyOwner {
+    function openCategory(uint64 _catId) external onlyOwner returns(bool){
         require(categories[_catId].open == false);
-        require(_openedOnce[_catId] == false);
-        _openedOnce[_catId] = true;
         categories[_catId].open = true;
+        return true;
     }
 
-    function closeCategory(uint64 _catId) external onlyOwner {
+    function getCategoryName(uint64 _catId) external view returns(string memory) {
+        return categories[_catId].name;
+    }
+    function getCategoryOpen(uint64 _catId) external view returns(bool) {
+        return categories[_catId].open;
+    }
+    function getCandidate(uint64 _catId, uint8 _canId) external view returns(string memory) {
+        return categories[_catId].candidates[_canId].name;
+    }
+    function getCandidateVotes(uint64 _catId, uint8 _canId) external view returns(uint) {
+        return categories[_catId].candidates[_canId].numCanVotes;
+    }
+
+    function closeCategory(uint64 _catId) external onlyOwner returns(bool){
         require(categories[_catId].open == true);
         categories[_catId].open = false;
+        return true;
     }
 
     function castVote(uint64 _catId, uint8 _canId) external registered whenNotPaused returns(bool) {
@@ -100,3 +111,6 @@ contract VotingBooth is VotingStorage {
         payable(msg.sender).transfer(address(this).balance);
     }
 }
+
+//add events
+//consider changing structs to mapping but build in protection from overwrite
