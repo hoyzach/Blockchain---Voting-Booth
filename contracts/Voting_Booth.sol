@@ -19,6 +19,11 @@ import "./Voting_Storage.sol";
 
 contract VotingBooth is VotingStorage {
 
+    event categorySet(string _func, string _categoryName, string[] _candidateNames, address _from);
+    event categoryStatusChange(string _func, string _categoryName, string _winner, address _from);
+
+// Functionality ------------------------------------------------------------------------------------------------------------------------------------------------------
+
     function register() external whenNotPaused {
         require(_registry[msg.sender] != true, "This address is already registered");
         _registry[msg.sender] = true;
@@ -40,6 +45,8 @@ contract VotingBooth is VotingStorage {
             categories[currentCatId].candidates.push(Candidate(_candidates[i], 0, i));
         }
 
+        emit categorySet("New Category", _category, _candidates, msg.sender);
+
         _catCounter++;
 
         return currentCatId;        
@@ -50,12 +57,18 @@ contract VotingBooth is VotingStorage {
         require(_openedOnce[_catId] == false);
         _openedOnce[_catId] = true;
         categories[_catId].open = true;
+
+        emit categoryStatusChange("Category Opened", categories[_catId].name, "", msg.sender);
+
         return true;
-        
     }
 
     function closeCategory(uint64 _catId) external onlyOwner categoryOpen(_catId) returns(bool){
+
         categories[_catId].open = false;
+
+        emit categoryStatusChange("Category Closed", categories[_catId].name, getCategoryWinner(_catId), msg.sender);
+
         return true;
     }
 
@@ -76,7 +89,7 @@ contract VotingBooth is VotingStorage {
 
 // Getter functions ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    function getCategoryVotes(uint64 _catId) public view categoryClosed(_catId) returns(uint) {
+    function getCategoryVotes(uint64 _catId) internal view categoryClosed(_catId) returns(uint) {
 
         uint categoryVotes = 0;
         for(uint8 i = 0; i < categories[_catId].candidates.length; i++) {
@@ -86,7 +99,7 @@ contract VotingBooth is VotingStorage {
         return categoryVotes;
     }
 
-    function getCategoryWinner(uint64 _catId) external view categoryClosed(_catId) returns(string memory) {
+    function getCategoryWinner(uint64 _catId) internal view categoryClosed(_catId) returns(string memory) {
 
         string memory categoryWinner = "no winner";
         uint categoryWinnerVotes = 0;
