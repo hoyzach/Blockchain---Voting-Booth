@@ -76,7 +76,7 @@ contract VotingBooth is VotingStorage {
 
 // Getter functions ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    function getCategoryVotes(uint64 _catId) internal view categoryClosed(_catId) returns(uint) {
+    function getCategoryVotes(uint64 _catId) public view categoryClosed(_catId) returns(uint) {
 
         uint categoryVotes = 0;
         for(uint8 i = 0; i < categories[_catId].candidates.length; i++) {
@@ -88,8 +88,20 @@ contract VotingBooth is VotingStorage {
 
     function getCategoryWinner(uint64 _catId) external view categoryClosed(_catId) returns(string memory) {
 
-        uint categoryVotes = getCategoryVotes(_catId);
+        string memory categoryWinner = "no winner";
+        uint categoryWinnerVotes = 0;
 
+        for(uint8 i = 0; i < categories[_catId].candidates.length; i++) {
+
+            uint currentCandidateVotes = categories[_catId].candidates[i].numCanVotes;
+
+            if(currentCandidateVotes > categoryWinnerVotes) {
+                categoryWinner = categories[_catId].candidates[i].name;
+                categoryWinnerVotes = currentCandidateVotes;
+            }
+        }
+
+        return categoryWinner;
     }
 
     function getCategoryName(uint64 _catId) external view returns(string memory) {
