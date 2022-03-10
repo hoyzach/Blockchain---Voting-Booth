@@ -95,5 +95,9 @@ describe("VotingBooth", function () {
   describe('Withdraw', () => {
 
   });
+
+  describe('Category Closed & Category Open', () => {
+
+  });
   
 });

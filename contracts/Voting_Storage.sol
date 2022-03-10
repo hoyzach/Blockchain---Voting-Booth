@@ -11,6 +11,16 @@ contract VotingStorage is Ownable, Pausable{
         _;
     }
 
+    modifier categoryClosed(uint64 _catId) {
+        require(categories[_catId].open == false, "This action cannot be performed when the category is open");
+        _;
+    }
+
+    modifier categoryOpen(uint64 _catId) {
+        require(categories[_catId].open == true, "This action cannot be performed when the category is closed");
+        _;
+    }
+
     struct Candidate {
         string name;
         //bytes32 bytesName; //not used, added for compatibility
@@ -33,6 +43,8 @@ contract VotingStorage is Ownable, Pausable{
     mapping (address => bool) public _registry;
     // address => categoryId => bool --- 1 vote per voter per category
     mapping (address => mapping(uint => bool)) public _boolVoter;
+    // categoryId => bool --- categories can only be opened one time
+    mapping (uint64 => bool) public _openedOnce;
 
     // total voters registered
     uint64 public _voterCount;

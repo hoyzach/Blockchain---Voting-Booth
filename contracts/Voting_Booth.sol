@@ -45,34 +45,21 @@ contract VotingBooth is VotingStorage {
         return currentCatId;        
     }
 
-    function openCategory(uint64 _catId) external onlyOwner returns(bool){
-        require(categories[_catId].open == false);
+    function openCategory(uint64 _catId) external onlyOwner categoryClosed(_catId) returns(bool){
+
+        require(_openedOnce[_catId] == false);
+        _openedOnce[_catId] = true;
         categories[_catId].open = true;
         return true;
+        
     }
 
-    function getCategoryName(uint64 _catId) external view returns(string memory) {
-        return categories[_catId].name;
-    }
-    function getCategoryOpen(uint64 _catId) external view returns(bool) {
-        return categories[_catId].open;
-    }
-    function getCandidate(uint64 _catId, uint8 _canId) external view returns(string memory) {
-        return categories[_catId].candidates[_canId].name;
-    }
-    function getCandidateVotes(uint64 _catId, uint8 _canId) external view returns(uint) {
-        return categories[_catId].candidates[_canId].numCanVotes;
-    }
-
-    function closeCategory(uint64 _catId) external onlyOwner returns(bool){
-        require(categories[_catId].open == true);
+    function closeCategory(uint64 _catId) external onlyOwner categoryOpen(_catId) returns(bool){
         categories[_catId].open = false;
         return true;
     }
 
-    function castVote(uint64 _catId, uint8 _canId) external registered whenNotPaused returns(bool) {
-        //prevent voter from voting in a closed category
-        require(categories[_catId].open == true, "This category is not open for voting.");
+    function castVote(uint64 _catId, uint8 _canId) external registered whenNotPaused categoryOpen(_catId) returns(bool) {
 
         //prevent voter from voting for another candidate in the same category
         require(_boolVoter[msg.sender][_catId] == false, "You have already voted in this category");
@@ -87,16 +74,41 @@ contract VotingBooth is VotingStorage {
         return true;
     }
 
-    function getCategoryVotes(uint64 _catId) external view returns(uint) {
-        require(categories[_catId].open == false);
+// Getter functions ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        uint CategoryVotes = 0;
+    function getCategoryVotes(uint64 _catId) internal view categoryClosed(_catId) returns(uint) {
+
+        uint categoryVotes = 0;
         for(uint8 i = 0; i < categories[_catId].candidates.length; i++) {
-            CategoryVotes = CategoryVotes + categories[_catId].candidates[i].numCanVotes;
+            categoryVotes = categoryVotes + categories[_catId].candidates[i].numCanVotes;
         }
 
-        return CategoryVotes;
+        return categoryVotes;
     }
+
+    function getCategoryWinner(uint64 _catId) external view categoryClosed(_catId) returns(string memory) {
+
+        uint categoryVotes = getCategoryVotes(_catId);
+
+    }
+
+    function getCategoryName(uint64 _catId) external view returns(string memory) {
+        return categories[_catId].name;
+    }
+
+    function getCategoryOpen(uint64 _catId) external view returns(bool) {
+        return categories[_catId].open;
+    }
+
+    function getCandidate(uint64 _catId, uint8 _canId) external view returns(string memory) {
+        return categories[_catId].candidates[_canId].name;
+    }
+    
+    function getCandidateVotes(uint64 _catId, uint8 _canId) external view returns(uint) {
+        return categories[_catId].candidates[_canId].numCanVotes;
+    }
+
+// Security functions ------------------------------------------------------------------------------------------------------------------------------------------------------
 
     function pause() external onlyOwner {
         _pause();
