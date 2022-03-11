@@ -45,6 +45,8 @@ contract VotingStorage is Ownable, Pausable{
     mapping (address => mapping(uint => bool)) public _boolVoter;
     // categoryId => bool --- categories can only be opened one time
     mapping (uint64 => bool) public _openedOnce;
+    // categoryId => winner
+    //mapping (uint64 => string) public _winners;
 
     // total voters registered
     uint64 public _voterCount;

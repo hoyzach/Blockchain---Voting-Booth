@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\contracts\\Voting_Booth.sol": {
-      "lastModificationDate": 1646866306982,
-      "contentHash": "335cf2af41bac851c94b513aa581fd3b",
+      "lastModificationDate": 1647029161136,
+      "contentHash": "8715117a5a7a445d419f92ff34163689",
       "sourceName": "contracts/Voting_Booth.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -39,8 +39,8 @@
       ]
     },
     "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\contracts\\Voting_Storage.sol": {
-      "lastModificationDate": 1646861852247,
-      "contentHash": "c7a11e0e863cfade78a658212afac8dd",
+      "lastModificationDate": 1647028788082,
+      "contentHash": "394649f300df00b4e44ea467ff83919f",
       "sourceName": "contracts/Voting_Storage.sol",
       "solcConfig": {
         "version": "0.8.0",

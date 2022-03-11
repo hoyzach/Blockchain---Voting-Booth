@@ -63,13 +63,15 @@ contract VotingBooth is VotingStorage {
         return true;
     }
 
-    function closeCategory(uint64 _catId) external onlyOwner categoryOpen(_catId) returns(bool){
+    function closeCategory(uint64 _catId) external onlyOwner categoryOpen(_catId) returns(string memory){
 
         categories[_catId].open = false;
 
-        emit categoryStatusChange("Category Closed", categories[_catId].name, getCategoryWinner(_catId), msg.sender);
+        string memory winner = getCategoryWinner(_catId);
 
-        return true;
+        emit categoryStatusChange("Category Closed", categories[_catId].name, winner, msg.sender);
+
+        return winner;
     }
 
     function castVote(uint64 _catId, uint8 _canId) external registered whenNotPaused categoryOpen(_catId) returns(bool) {
@@ -148,6 +150,3 @@ contract VotingBooth is VotingStorage {
         payable(msg.sender).transfer(address(this).balance);
     }
 }
-
-//add events
-//consider changing structs to mapping but build in protection from overwrite

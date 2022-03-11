@@ -86,17 +86,66 @@ describe("VotingBooth", function () {
 
   describe('Cast Vote', () => {
 
+    it("Should only allow registered voters to vote", async () => {
+
+      await votingbooth.setCategory("Animals", ["Cats", "Dogs", "Elephants"]);
+
+      await expect(votingbooth.castVote(0,0)).to.be.revertedWith("This wallet address is not yet registered");
+
+    });
+
+    it("Should not allow votes on closed categories", async () => {
+
+      await votingbooth.setCategory("Animals", ["Cats", "Dogs", "Elephants"]);
+      await votingbooth.register();
+      await expect(votingbooth.castVote(0,0)).to.be.revertedWith("This action cannot be performed when the category is closed");
+
+    });
+
+    it("Should properly keep track of votes", async () => {
+
+      await votingbooth.setCategory("Animals", ["Cats", "Dogs", "Elephants"]);
+      await votingbooth.openCategory(0);
+      await votingbooth.register();
+      await votingbooth.connect(addr1).register();
+      await votingbooth.connect(addr2).register();
+
+      await votingbooth.castVote(0,0);
+      await votingbooth.connect(addr1).castVote(0,0);
+
+      expect(await votingbooth.getCandidateVotes(0,0)).to.equal(2);
+
+      await votingbooth.connect(addr2).castVote(0,2);
+      expect(await votingbooth.getCandidateVotes(0,2)).to.equal(1);
+
+      const winner = await votingbooth.callStatic.closeCategory(0);
+      expect(winner).to.equal("Cats");
+
+    });
+
+    it("Should not let voters vote more than once in a category", async () => {
+
+    });
+
   });
 
   describe('Transfer Ownership', () => {
+
+    it("Should only allow owner to transfer ownership", async () => {
+
+    });
 
   });
 
   describe('Withdraw', () => {
 
-  });
+    it("Should only allow owner to withdraw", async () => {
 
-  describe('Category Closed & Category Open', () => {
+    });
+
+    it("Should only allow withdraw if there is ether in the contract", async () => {
+
+    });
 
   });
   
