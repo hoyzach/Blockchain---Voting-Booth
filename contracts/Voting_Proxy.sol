@@ -5,8 +5,6 @@ import "./Voting_Storage.sol";
 
 contract VotingProxy is VotingStorage {
 
-    address currentFuncAddress;
-
     //deploy contract with pointer to current functionality contract
     constructor(address _currentFuncAddress) {
         currentFuncAddress = _currentFuncAddress;
@@ -19,7 +17,7 @@ contract VotingProxy is VotingStorage {
 
     //fallback function
     fallback() payable external {
-        
+    
         //redirect to currentAddress
         address implementation = currentFuncAddress;
         require(currentFuncAddress != address(0));

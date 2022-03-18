@@ -19,7 +19,8 @@
                 "evm.bytecode",
                 "evm.deployedBytecode",
                 "evm.methodIdentifiers",
-                "metadata"
+                "metadata",
+                "storageLayout"
               ],
               "": [
                 "ast"
@@ -39,8 +40,8 @@
       ]
     },
     "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\contracts\\Voting_Storage.sol": {
-      "lastModificationDate": 1647028788082,
-      "contentHash": "394649f300df00b4e44ea467ff83919f",
+      "lastModificationDate": 1647621102176,
+      "contentHash": "4aa7bc62226f0aca13d3780e5005f68c",
       "sourceName": "contracts/Voting_Storage.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -56,7 +57,8 @@
                 "evm.bytecode",
                 "evm.deployedBytecode",
                 "evm.methodIdentifiers",
-                "metadata"
+                "metadata",
+                "storageLayout"
               ],
               "": [
                 "ast"
@@ -129,7 +131,8 @@
                 "evm.bytecode",
                 "evm.deployedBytecode",
                 "evm.methodIdentifiers",
-                "metadata"
+                "metadata",
+                "storageLayout"
               ],
               "": [
                 "ast"
@@ -166,7 +169,8 @@
                 "evm.bytecode",
                 "evm.deployedBytecode",
                 "evm.methodIdentifiers",
-                "metadata"
+                "metadata",
+                "storageLayout"
               ],
               "": [
                 "ast"
@@ -184,8 +188,8 @@
       ]
     },
     "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\contracts\\Voting_Proxy.sol": {
-      "lastModificationDate": 1646257903460,
-      "contentHash": "179ea4afa142807ae724380b20dd250f",
+      "lastModificationDate": 1647621145533,
+      "contentHash": "8d75f34e4792ebbc075332ebf79eeb6e",
       "sourceName": "contracts/Voting_Proxy.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -201,7 +205,8 @@
                 "evm.bytecode",
                 "evm.deployedBytecode",
                 "evm.methodIdentifiers",
-                "metadata"
+                "metadata",
+                "storageLayout"
               ],
               "": [
                 "ast"
@@ -238,7 +243,8 @@
                 "evm.bytecode",
                 "evm.deployedBytecode",
                 "evm.methodIdentifiers",
-                "metadata"
+                "metadata",
+                "storageLayout"
               ],
               "": [
                 "ast"

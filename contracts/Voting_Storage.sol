@@ -6,6 +6,8 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 
 contract VotingStorage is Ownable, Pausable{
 
+     address currentFuncAddress;
+
     modifier registered() {
         require(_registry[msg.sender] == true, "This wallet address is not yet registered");
         _;
