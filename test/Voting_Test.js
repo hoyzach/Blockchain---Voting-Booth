@@ -13,10 +13,7 @@ describe("VotingProxy", function () {
     votingbooth = await VotingBooth.deploy();
     VotingProxy = await hre.ethers.getContractFactory("VotingProxy");
     votingproxy = await VotingProxy.deploy(votingbooth.address);
-    //console.log("Address of booth contract: ", await votingbooth.address);
-    //console.log("Address of proxy contract: ", await votingproxy.address);
     [owner, addr1, addr2, addr3, _] = await ethers.getSigners();
-    //console.log(owner.address, addr1.address, addr2.address, addr3.address);
 
   });
 

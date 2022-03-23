@@ -21,6 +21,7 @@ contract VotingBooth is VotingStorage {
 
     event categorySet(string _func, string _categoryName, string[] _candidateNames, address _from);
     event categoryStatusChange(string _func, string _categoryName, string _winner, address _from);
+    event donationReceived(address _donator, uint _amount, bytes _message);
 
 // Functionality ------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -148,5 +149,9 @@ contract VotingBooth is VotingStorage {
     function withdraw() external onlyOwner {
         require(address(this).balance > 0, "No funds in contract");
         payable(msg.sender).transfer(address(this).balance);
+    }
+
+    fallback() payable external {
+         emit donationReceived(msg.sender, msg.value, msg.data);
     }
 }
