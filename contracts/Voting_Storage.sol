@@ -6,33 +6,34 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 
 contract VotingStorage is Ownable, Pausable{
 
-     address currentFuncAddress;
+     address public currentFuncAddress;
 
+    //prevents non registered addresses from voting on the application
     modifier registered() {
         require(_registry[msg.sender] == true, "This wallet address is not yet registered");
         _;
     }
 
+    //prevents calling functions that require a category to be closed and when the category is open
     modifier categoryClosed(uint64 _catId) {
         require(categories[_catId].open == false, "This action cannot be performed when the category is open");
         _;
     }
 
+    //prevents calling functions that require a category to be open when the category is closed
     modifier categoryOpen(uint64 _catId) {
         require(categories[_catId].open == true, "This action cannot be performed when the category is closed");
         _;
     }
 
     struct Candidate {
-        string name;
-        //bytes32 bytesName; //not used, added for compatibility
+        bytes32 name;
         uint numCanVotes;
         uint8 canId;
     }
 
     struct Category {
-        string name;
-        //bytes32 bytesName; //not used, added for compatibility
+        bytes32 name;
         Candidate[] candidates;
         bool open;
         uint64 catId;
@@ -47,10 +48,8 @@ contract VotingStorage is Ownable, Pausable{
     mapping (address => mapping(uint => bool)) public _boolVoter;
     // categoryId => bool --- categories can only be opened one time
     mapping (uint64 => bool) public _openedOnce;
-    // categoryId => winner
-    //mapping (uint64 => string) public _winners;
 
-    // total voters registered
+    // total voters registered on application
     uint64 public _voterCount;
     // total votes recorded on application
     uint public _totalVotes;

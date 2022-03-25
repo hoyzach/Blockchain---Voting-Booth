@@ -1,23 +1,14 @@
 // SPDX-License-Identifier: Unlicensed
 
 /*
-Even though voter data is visible on the Ethereum blockchain, this application is written as if it isn't.
-Additionally, solidity does not allow for functions to be called automatically after a specified period of time,
-therefore this contract needs to use owner privileges to open and close a voting category.   
-The ultimate decentralized voting application would not require owner privileges and would not allow anyone to 
-see voting data as it is collected in order to discourage voting based on current voting data and to 
-protect the privacy of the individual voters.
-
-This application does not prevent the same entity from creating multiple address to vote from.
-A separate database with a voter identifcation number obtained through a voter identification verification
-process would need to be queried through a modified register function. 
+THIS CONTRACT IS ONLY FOR TESTING THE PROXY UPGRADE ADDRESS FUNCTION
 */
 pragma solidity ^0.8.0;
 
 import "./Voting_Storage.sol";
 
 
-contract VotingBooth is VotingStorage {
+contract VotingBoothUpdated is VotingStorage {
 
     event categorySet(bytes32 _func, bytes32 _categoryName, bytes32[] _candidateNames, address _from);
     event categoryStatusChange(bytes32 _func, bytes32 _categoryName, bytes32 _winner, address _from);
@@ -112,7 +103,7 @@ contract VotingBooth is VotingStorage {
     //returns category winner given catId
     function getCategoryWinner(uint64 _catId) internal view returns(bytes32) {
 
-        bytes32 categoryWinner = "no winner";
+        bytes32 categoryWinner = 0x00000000000000000000000000000000000000000000000000000000000000;
         uint categoryWinnerVotes = 0;
 
         //loop through candidates and compare each vote count
