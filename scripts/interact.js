@@ -67,6 +67,10 @@ async function main() {
     //await proxyOwner.castVote(0,2);
     //await sleep(minetx);
 
+    //non-owners should not be able to close a category
+    //await proxyAcct1.closeCategory(0);
+    //await sleep(minetx);
+
     //winner should be declared correctly after closing category
     //await proxyOwner.closeCategory(0); //check events for winner
     //await sleep(minetx);
@@ -93,6 +97,94 @@ async function main() {
     //await proxyOwner.openCategory(1);
     //await sleep(minetx);
     //await proxyOwner.castVote(1,4);
+    //await sleep(minetx);
+
+    //non-owners should not be able to pause the contract
+    //await proxyAcct1.pause();
+    //await sleep(minetx);
+
+    //owner should be able to pause the contract
+    //await proxyOwner.pause();
+    //await sleep(minetx);
+
+    //voters should not be able to cast votes while contract is paused
+    //await proxyOwner.castVote(1,1);
+    //await sleep(minetx);
+
+    //voters should not be able to register while the contract is paused
+    //await proxyAcct2.register();
+    //await sleep(minetx);
+
+    //non-owners should not be able to un-pause the contract
+    //await proxyAcct1.unpause();
+    //await sleep(minetx);
+
+    //contract pointer should not be updated when contract is unpaused
+    //await proxyOwner.unpause();
+    //await sleep(minetx);
+    //await proxyOwner.upgrade("0x1F68c268149171935154d1d8188c8E38bC0e8a5b");
+    //await sleep(minetx);
+
+    //non-owners should not be able to withdraw eth from the contract
+    /*await acct1.sendTransaction({
+      to: CONTRACT_ADDRESS,
+      value: ethers.utils.parseEther("0.1"), // Sends exactly 0.1 ether
+    });*/
+    //await sleep(minetx);
+    //await proxyAcct1.withdraw();
+    //await sleep(minetx);
+
+    //owner should be able to withdraw eth from the contract
+    //await proxyOwner.withdraw();
+    //await sleep(minetx);
+
+    //owner should not be able to withdraw from an empty contract
+    //await proxyOwner.withdraw();
+    //await sleep(minetx);
+
+    //voters should not be able to send more than 1 castVote transaction at a time
+    //proxyAcct1.castVote(1,1);
+    //proxyAcct1.castVote(1,1);
+    //proxyAcct1.castVote(1,1); 
+    //console.log(await proxyAcct1.getCategoryVotes(1));
+
+    //non-owners should not be able to update the functionality address pointer
+    //await proxyAcct1.upgrade("0x1F68c268149171935154d1d8188c8E38bC0e8a5b");
+    //await sleep(minetx);
+
+    //owner should be able to upgrade functionality contract address pointer
+    //await proxyOwner.pause();
+    //await sleep(minetx);
+    //await proxyOwner.upgrade("0x1F68c268149171935154d1d8188c8E38bC0e8a5b");
+    //await sleep(minetx);
+    //await proxyOwner.unpause();
+    //await sleep(minetx)
+    //console.log(await proxyOwner.sayHello()); //new function only in updated contract
+
+    //check storage of proxy contract remains the same
+    //console.log(await proxyAcct1.getCategoryVotes(1)); 
+    //await proxyAcct1.register();
+    //await proxyAcct1.castVote(1,1);
+
+    //non-owners should not be able to transfer ownership
+    //await proxyAcct1.transferOwnership("0xa10205bFAbCE9AbBb672874462C6Cd065f268cc8");
+
+    //owner should be able to transfer ownership of contract
+    //await proxyOwner.transferOwnership("0xa10205bFAbCE9AbBb672874462C6Cd065f268cc8");
+    //await sleep(minetx);
+
+    //previous owner should now not be able to call any ownable functions
+    //await proxyOwner.setCategory(formatBytes32String("Colors"), [formatBytes32String("Black"), formatBytes32String("Yellow"), formatBytes32String("Pink")]);
+    //await sleep(minetx);
+    //await proxyOwner.pause();
+    //await sleep(minetx);
+    //await proxyOwner.transferOwnership("0xa10205bFAbCE9AbBb672874462C6Cd065f268cc8");
+    //await sleep(minetx);
+
+    //new owner should be able to call ownable functions
+    //await proxyAcct1.pause();
+    //await sleep(minetx);
+    //await proxyAcct1.transferOwnership("0x9eA8B00029Cf9C1B57483ecadCaFC94638fe7B17"); //transfer ownership back
     //await sleep(minetx);
   }
 

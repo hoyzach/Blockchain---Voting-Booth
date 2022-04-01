@@ -86,6 +86,11 @@ contract VotingBoothUpdated is VotingStorage {
         _totalVotes++;
     }
 
+    //function to test if the proxy pointer has been successfully updated
+    function sayHello() external pure returns(string memory) {
+        return "hello, the contract was successfully updated";
+    }
+
 // Getter functions ------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //returns total number of category votes given catId
