@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { formatBytes32String, parseBytes32String } = require("ethers/lib/utils");
+const { formatBytes32String } = require("ethers/lib/utils");
 
 const API_KEY = process.env.API_KEY;
 const OWNER_KEY = process.env.OWNER_KEY;
@@ -92,12 +92,12 @@ async function main() {
     //await sleep(minetx);
 
     //voters should not be able to vote for a non-existent candidate
-    //await proxyOwner.setCategory(formatBytes32String("Colors"), [formatBytes32String("Red"), formatBytes32String("Orange"), formatBytes32String("Blue")]);
-    //await sleep(minetx);
-    //await proxyOwner.openCategory(1);
-    //await sleep(minetx);
-    //await proxyOwner.castVote(1,4);
-    //await sleep(minetx);
+    await proxyOwner.setCategory(formatBytes32String("Colors"), [formatBytes32String("Red"), formatBytes32String("Orange"), formatBytes32String("Blue")]);
+    await sleep(minetx);
+    await proxyOwner.openCategory(1);
+    await sleep(minetx);
+    await proxyOwner.castVote(1,4);
+    await sleep(minetx);
 
     //non-owners should not be able to pause the contract
     //await proxyAcct1.pause();

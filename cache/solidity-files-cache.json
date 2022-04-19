@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\contracts\\Voting_Booth_Updated.sol": {
+    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\contracts\\Voting_Booth_Updated.sol": {
       "lastModificationDate": 1648753013561,
       "contentHash": "ba4aee386417305e0eaecd829f1cc501",
       "sourceName": "contracts/Voting_Booth_Updated.sol",
@@ -38,9 +38,9 @@
         "VotingBoothUpdated"
       ]
     },
-    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\contracts\\Voting_Storage.sol": {
-      "lastModificationDate": 1648243045004,
-      "contentHash": "8857da959d02c45e5b00863a5b1e3921",
+    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\contracts\\Voting_Storage.sol": {
+      "lastModificationDate": 1650390766702,
+      "contentHash": "189dc45980f2f79798aaa9c50b6e826a",
       "sourceName": "contracts/Voting_Storage.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -76,7 +76,7 @@
         "VotingStorage"
       ]
     },
-    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
+    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
       "lastModificationDate": 1646155570124,
       "contentHash": "8398972af73b4e9e5ff3b31cad86234f",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
@@ -113,7 +113,7 @@
         "Ownable"
       ]
     },
-    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\node_modules\\@openzeppelin\\contracts\\security\\Pausable.sol": {
+    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\node_modules\\@openzeppelin\\contracts\\security\\Pausable.sol": {
       "lastModificationDate": 1646155570126,
       "contentHash": "9c2dccab8e3a43a18c41e358763fe4d8",
       "sourceName": "@openzeppelin/contracts/security/Pausable.sol",
@@ -150,7 +150,7 @@
         "Pausable"
       ]
     },
-    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
+    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
       "lastModificationDate": 1646155569882,
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
@@ -185,8 +185,8 @@
         "Context"
       ]
     },
-    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\contracts\\Voting_Proxy.sol": {
-      "lastModificationDate": 1647626992105,
+    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\contracts\\Voting_Proxy.sol": {
+      "lastModificationDate": 1648569558013,
       "contentHash": "70405128b44440c39e85ca252a737ebf",
       "sourceName": "contracts/Voting_Proxy.sol",
       "solcConfig": {
@@ -222,9 +222,9 @@
         "VotingProxy"
       ]
     },
-    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\contracts\\Voting_Booth.sol": {
-      "lastModificationDate": 1648247231921,
-      "contentHash": "899321862f5912d76a98b131f8f9b9ea",
+    "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\contracts\\Voting_Booth.sol": {
+      "lastModificationDate": 1650390691685,
+      "contentHash": "27f9fc2c16b5f7f2ea7173a87e3db121",
       "sourceName": "contracts/Voting_Booth.sol",
       "solcConfig": {
         "version": "0.8.0",

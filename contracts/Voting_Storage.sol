@@ -40,7 +40,7 @@ contract VotingStorage is Ownable, Pausable{
     }
 
     Category[] public categories;
-    uint64 _catCounter;
+    uint64 public _catCounter;
 
     // address => bool --- list of voter addresses registered to site
     mapping (address => bool) public _registry;
@@ -53,5 +53,17 @@ contract VotingStorage is Ownable, Pausable{
     uint64 public _voterCount;
     // total votes recorded on application
     uint public _totalVotes;
+
+
+    // spare sotrage 
+    mapping (uint64 => bool) public _uintboolStorage;
+    mapping (address => bool) public _addressboolStorage;
+    mapping (address => uint64) public _addressuintStorage;
+    uint public uintStorage1;
+    uint public uintStorage2;
+    uint public uintStorage3;
     
+
+
+
 }

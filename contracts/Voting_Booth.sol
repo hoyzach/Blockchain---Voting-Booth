@@ -8,9 +8,9 @@ The ultimate decentralized voting application would not require owner privileges
 see voting data as it is collected in order to discourage voting based on current voting data and to 
 protect the privacy of the individual voters.
 
-This application does not prevent the same entity from creating multiple address to vote from.
+This application does not prevent the same entity from creating multiple addresses to vote from.
 A separate database with a voter identifcation number obtained through a voter identification verification
-process would need to be queried through a modified register function. 
+process (such as a TIN or SSN number in the USA) would need to be queried through a modified register function. 
 */
 pragma solidity ^0.8.0;
 
