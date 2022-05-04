@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { formatBytes32String } = require("ethers/lib/utils");
+const { formatBytes32String , parseBytes32String } = require("ethers/lib/utils");
 
 const API_KEY = process.env.API_KEY;
 const OWNER_KEY = process.env.OWNER_KEY;
@@ -92,12 +92,13 @@ async function main() {
     //await sleep(minetx);
 
     //voters should not be able to vote for a non-existent candidate
-    await proxyOwner.setCategory(formatBytes32String("Colors"), [formatBytes32String("Red"), formatBytes32String("Orange"), formatBytes32String("Blue")]);
-    await sleep(minetx);
-    await proxyOwner.openCategory(1);
-    await sleep(minetx);
-    await proxyOwner.castVote(1,4);
-    await sleep(minetx);
+    //await proxyOwner.setCategory(formatBytes32String("Colors"), [formatBytes32String("Red"), formatBytes32String("Orange"), formatBytes32String("Blue")]);
+    //await sleep(minetx);
+    //await proxyOwner.openCategory(1);
+    //await sleep(minetx);
+    //await proxyOwner.castVote(1,4);
+    //await sleep(minetx);
+//----------------------------------------------------------------------------------------------
 
     //non-owners should not be able to pause the contract
     //await proxyAcct1.pause();
@@ -122,7 +123,7 @@ async function main() {
     //contract pointer should not be updated when contract is unpaused
     //await proxyOwner.unpause();
     //await sleep(minetx);
-    //await proxyOwner.upgrade("0x1F68c268149171935154d1d8188c8E38bC0e8a5b");
+    //await proxyOwner.upgrade("0x66c17554d8111920DBc0F8a5f83F11c61972684A");
     //await sleep(minetx);
 
     //non-owners should not be able to withdraw eth from the contract
@@ -155,7 +156,7 @@ async function main() {
     //owner should be able to upgrade functionality contract address pointer
     //await proxyOwner.pause();
     //await sleep(minetx);
-    //await proxyOwner.upgrade("0x1F68c268149171935154d1d8188c8E38bC0e8a5b");
+    //await proxyOwner.upgrade("0x66c17554d8111920DBc0F8a5f83F11c61972684A");
     //await sleep(minetx);
     //await proxyOwner.unpause();
     //await sleep(minetx)
@@ -186,6 +187,17 @@ async function main() {
     //await sleep(minetx);
     //await proxyAcct1.transferOwnership("0x9eA8B00029Cf9C1B57483ecadCaFC94638fe7B17"); //transfer ownership back
     //await sleep(minetx);
+
+    //------------------------------------------------
+    //console.log(await proxyOwner._catCounter());
+    //console.log(await proxyOwner.getMaxCandidates());
+    //console.log(parseBytes32String ( await proxyOwner.getCategoryWinner(0)) );
+    //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
+    //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
+    //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
+    //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
+    //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
+    //--------------------------------------
   }
 
   main();

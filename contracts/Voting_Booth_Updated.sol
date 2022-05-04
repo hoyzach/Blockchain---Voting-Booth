@@ -3,6 +3,7 @@
 /*
 THIS CONTRACT IS ONLY FOR TESTING THE PROXY UPGRADE ADDRESS FUNCTION
 */
+
 pragma solidity ^0.8.0;
 
 import "./Voting_Storage.sol";
@@ -86,11 +87,6 @@ contract VotingBoothUpdated is VotingStorage {
         _totalVotes++;
     }
 
-    //function to test if the proxy pointer has been successfully updated
-    function sayHello() external pure returns(string memory) {
-        return "hello, the contract was successfully updated";
-    }
-
 // Getter functions ------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //returns total number of category votes given catId
@@ -106,9 +102,9 @@ contract VotingBoothUpdated is VotingStorage {
     }
 
     //returns category winner given catId
-    function getCategoryWinner(uint64 _catId) internal view returns(bytes32) {
+    function getCategoryWinner(uint64 _catId) view public categoryClosed(_catId) returns(bytes32) {
 
-        bytes32 categoryWinner = 0x00000000000000000000000000000000000000000000000000000000000000;
+        bytes32 categoryWinner = "";
         uint categoryWinnerVotes = 0;
 
         //loop through candidates and compare each vote count
@@ -143,6 +139,16 @@ contract VotingBoothUpdated is VotingStorage {
     //returns candidate total votes given category and candidate Ids as long as category is closed
     function getCandidateVotes(uint64 _catId, uint8 _canId) external view categoryClosed(_catId) returns(uint) {
         return categories[_catId].candidates[_canId].numCanVotes;
+    }
+
+    function getMaxCandidates() external view returns(uint) {
+        uint maxCandidates = 0;
+        for (uint64 i = 0; i < categories.length; i++) {
+            if(categories[i].candidates.length > maxCandidates){
+                maxCandidates = categories[i].candidates.length;
+            }
+        }
+        return maxCandidates;
     }
 
 // Security functions ------------------------------------------------------------------------------------------------------------------------------------------------------
