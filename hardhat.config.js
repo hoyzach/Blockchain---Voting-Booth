@@ -7,7 +7,7 @@ require('@nomiclabs/hardhat-ethers');
 require('dotenv').config();
 
 module.exports = {
-  solidity: "0.8.0",
+  solidity: "0.8.4",
   networks: {
     rinkeby: {
       url: process.env.NODE_URL,

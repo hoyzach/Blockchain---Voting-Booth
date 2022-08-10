@@ -12,7 +12,7 @@ This application does not prevent the same entity from creating multiple address
 A separate database with a voter identifcation number obtained through a voter identification verification
 process (such as a TIN or SSN number in the USA) would need to be queried through a modified register function. 
 */
-pragma solidity ^0.8.0;
+pragma solidity 0.8.4;
 
 import "./Voting_Storage.sol";
 

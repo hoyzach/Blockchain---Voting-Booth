@@ -4,7 +4,7 @@
 THIS CONTRACT IS ONLY FOR TESTING THE PROXY UPGRADE ADDRESS FUNCTION
 */
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.4;
 
 import "./Voting_Storage.sol";
 
