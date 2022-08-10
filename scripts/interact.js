@@ -192,11 +192,14 @@ async function main() {
     //console.log(await proxyOwner._catCounter());
     //console.log(await proxyOwner.getMaxCandidates());
     //console.log(parseBytes32String ( await proxyOwner.getCategoryWinner(0)) );
+    //await proxyOwner.setCategory(formatBytes32String("Animals"), [formatBytes32String("Cats"), formatBytes32String("Dogs"), formatBytes32String("Elephants")]);
+    //await proxyOwner.setCategory(formatBytes32String("Colors"), [formatBytes32String("Red"), formatBytes32String("Orange"), formatBytes32String("Blue")]);
+    //await proxyOwner.setCategory(formatBytes32String("Crypto"), [formatBytes32String("Bitcoin"), formatBytes32String("Ethereum"), formatBytes32String("Polkadot")]);
+    //await proxyOwner.setCategory(formatBytes32String("Social Media Platforms"), [formatBytes32String("Twitter"), formatBytes32String("Facebook"), formatBytes32String("Instagram")]);
     //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
-    //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
-    //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
-    //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
-    //await proxyOwner.setCategory(formatBytes32String("Sports"), [formatBytes32String("Soccer"), formatBytes32String("Tennis"), formatBytes32String("Basketball")]);
+    //await proxyOwner.setCategory(formatBytes32String("Countries"), [formatBytes32String("Canada"), formatBytes32String("Mexico"), formatBytes32String("United States"),formatBytes32String("New Zealand")]);
+    //await proxyOwner.setCategory(formatBytes32String("Car Brands"), [formatBytes32String("Audi"), formatBytes32String("BMW"), formatBytes32String("Jeep"),formatBytes32String("Mazda"),formatBytes32String("Ford"),formatBytes32String("Honda")]);
+    //await proxyOwner.openCategory(4);
     //--------------------------------------
   }
 
