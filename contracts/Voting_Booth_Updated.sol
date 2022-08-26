@@ -26,13 +26,13 @@ contract VotingBoothUpdated is VotingStorage {
     }
 
     //returns catId for new category given category name and candidates array
-    function setCategory(bytes32 _category, bytes32[] memory _candidates) external onlyOwner returns (uint64){
+    function setCategory(bytes32 _category, bytes32[] memory _candidates) external onlyOwner returns (uint128){
 
         //ensures number of candidates remains within amount allowable by data type for canId (uint8)
-        require(_candidates.length <256, "There are too many candidates.");
+        require(_candidates.length < 256, "There are too many candidates.");
 
         //grab current catId number
-        uint64 currentCatId = _catCounter;
+        uint128 currentCatId = _catCounter;
         _catCounter++;
 
         //create new categories array entry and populate category struct data
@@ -50,7 +50,7 @@ contract VotingBoothUpdated is VotingStorage {
     }
 
     //allows owner to open a previously set category given catId
-    function openCategory(uint64 _catId) external onlyOwner categoryClosed(_catId) {
+    function openCategory(uint256 _catId) external onlyOwner categoryClosed(_catId) {
 
         //only allow categories to be opened once
         require(_openedOnce[_catId] == false, "This category cannot be opened again");
@@ -61,7 +61,7 @@ contract VotingBoothUpdated is VotingStorage {
     }
 
     //allows owner to close an open category and determine winner given catId
-    function closeCategory(uint64 _catId) external onlyOwner categoryOpen(_catId) returns(bytes32) {
+    function closeCategory(uint256 _catId) external onlyOwner categoryOpen(_catId) returns(bytes32) {
 
         categories[_catId].open = false;
 
@@ -74,7 +74,7 @@ contract VotingBoothUpdated is VotingStorage {
     }
 
     //allows user to cast vote given category Id and candidate Id
-    function castVote(uint64 _catId, uint8 _canId) external registered whenNotPaused categoryOpen(_catId) {
+    function castVote(uint256 _catId, uint8 _canId) external registered whenNotPaused categoryOpen(_catId) {
 
         //prevent voter from voting for another candidate in the same category
         require(_boolVoter[msg.sender][_catId] == false, "You have already voted in this category");
@@ -90,7 +90,7 @@ contract VotingBoothUpdated is VotingStorage {
 // Getter functions ------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //returns total number of category votes given catId
-    function getCategoryVotes(uint64 _catId) public view returns(uint) {
+    function getCategoryVotes(uint256 _catId) public view returns(uint) {
 
         //loop through cadidates and sum candidate votes
         uint categoryVotes = 0;
@@ -102,7 +102,7 @@ contract VotingBoothUpdated is VotingStorage {
     }
 
     //returns category winner given catId
-    function getCategoryWinner(uint64 _catId) view public categoryClosed(_catId) returns(bytes32) {
+    function getCategoryWinner(uint256 _catId) view public categoryClosed(_catId) returns(bytes32) {
 
         bytes32 categoryWinner = "";
         uint categoryWinnerVotes = 0;
@@ -122,28 +122,28 @@ contract VotingBoothUpdated is VotingStorage {
     }
 
     //returns category name given category Id
-    function getCategoryName(uint64 _catId) external view returns(bytes32) {
+    function getCategoryName(uint256 _catId) external view returns(bytes32) {
         return categories[_catId].name;
     }
 
     //returns bool value showing if category open is true or false given category Id
-    function getCategoryOpen(uint64 _catId) external view returns(bool) {
+    function getCategoryOpen(uint256 _catId) external view returns(bool) {
         return categories[_catId].open;
     }
 
     //returns candidate name given both category and candidate Ids
-    function getCandidate(uint64 _catId, uint8 _canId) external view returns(bytes32) {
+    function getCandidate(uint256 _catId, uint8 _canId) external view returns(bytes32) {
         return categories[_catId].candidates[_canId].name;
     }
     
     //returns candidate total votes given category and candidate Ids as long as category is closed
-    function getCandidateVotes(uint64 _catId, uint8 _canId) external view categoryClosed(_catId) returns(uint) {
+    function getCandidateVotes(uint256 _catId, uint8 _canId) external view categoryClosed(_catId) returns(uint) {
         return categories[_catId].candidates[_canId].numCanVotes;
     }
 
     function getMaxCandidates() external view returns(uint) {
         uint maxCandidates = 0;
-        for (uint64 i = 0; i < categories.length; i++) {
+        for (uint256 i = 0; i < categories.length; i++) {
             if(categories[i].candidates.length > maxCandidates){
                 maxCandidates = categories[i].candidates.length;
             }

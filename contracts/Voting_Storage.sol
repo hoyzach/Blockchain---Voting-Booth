@@ -15,20 +15,20 @@ contract VotingStorage is Ownable, Pausable{
     }
 
     //prevents calling functions that require a category to be closed and when the category is open
-    modifier categoryClosed(uint64 _catId) {
+    modifier categoryClosed(uint256 _catId) {
         require(categories[_catId].open == false, "This action cannot be performed when the category is open");
         _;
     }
 
     //prevents calling functions that require a category to be open when the category is closed
-    modifier categoryOpen(uint64 _catId) {
+    modifier categoryOpen(uint256 _catId) {
         require(categories[_catId].open == true, "This action cannot be performed when the category is closed");
         _;
     }
 
     struct Candidate {
         bytes32 name;
-        uint numCanVotes;
+        uint248 numCanVotes;
         uint8 canId;
     }
 
@@ -36,34 +36,29 @@ contract VotingStorage is Ownable, Pausable{
         bytes32 name;
         Candidate[] candidates;
         bool open;
-        uint64 catId;
+        uint256 catId;
     }
 
     Category[] public categories;
-    uint64 public _catCounter;
+
+    uint128 public _catCounter;
+    
+    // total voters registered on application
+    uint128 public _voterCount;
+    // total votes recorded on application
+    uint256 public _totalVotes;
 
     // address => bool --- list of voter addresses registered to site
     mapping (address => bool) public _registry;
     // address => categoryId => bool --- 1 vote per voter per category
-    mapping (address => mapping(uint => bool)) public _boolVoter;
+    mapping (address => mapping(uint256 => bool)) public _boolVoter;
     // categoryId => bool --- categories can only be opened one time
-    mapping (uint64 => bool) public _openedOnce;
+    mapping (uint256 => bool) public _openedOnce;
 
-    // total voters registered on application
-    uint64 public _voterCount;
-    // total votes recorded on application
-    uint public _totalVotes;
-
-
-    // spare sotrage 
-    mapping (uint64 => bool) public _uintboolStorage;
+    // spare sotrage for upgrades - taken out for efficiency
+    /*
+    mapping (uint => bool) public _uintboolStorage;
     mapping (address => bool) public _addressboolStorage;
     mapping (address => uint64) public _addressuintStorage;
-    uint public uintStorage1;
-    uint public uintStorage2;
-    uint public uintStorage3;
-    
-
-
-
+    */
 }

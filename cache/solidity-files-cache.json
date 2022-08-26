@@ -2,11 +2,11 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\contracts\\Voting_Booth_Updated.sol": {
-      "lastModificationDate": 1651697611307,
-      "contentHash": "0cc1eff1debddb8f2f3fad584c86d83c",
+      "lastModificationDate": 1661523171883,
+      "contentHash": "4d982a39de9ac61effd3770030881243",
       "sourceName": "contracts/Voting_Booth_Updated.sol",
       "solcConfig": {
-        "version": "0.8.0",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
             "enabled": false,
@@ -32,18 +32,18 @@
         "./Voting_Storage.sol"
       ],
       "versionPragmas": [
-        "^0.8.0"
+        "0.8.4"
       ],
       "artifacts": [
         "VotingBoothUpdated"
       ]
     },
     "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\contracts\\Voting_Storage.sol": {
-      "lastModificationDate": 1650390766702,
-      "contentHash": "189dc45980f2f79798aaa9c50b6e826a",
+      "lastModificationDate": 1661523169413,
+      "contentHash": "47e9c456647a7da39362e52941e77a89",
       "sourceName": "contracts/Voting_Storage.sol",
       "solcConfig": {
-        "version": "0.8.0",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
             "enabled": false,
@@ -70,7 +70,7 @@
         "@openzeppelin/contracts/security/Pausable.sol"
       ],
       "versionPragmas": [
-        "^0.8.0"
+        "0.8.4"
       ],
       "artifacts": [
         "VotingStorage"
@@ -81,7 +81,7 @@
       "contentHash": "8398972af73b4e9e5ff3b31cad86234f",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
-        "version": "0.8.0",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
             "enabled": false,
@@ -118,7 +118,7 @@
       "contentHash": "9c2dccab8e3a43a18c41e358763fe4d8",
       "sourceName": "@openzeppelin/contracts/security/Pausable.sol",
       "solcConfig": {
-        "version": "0.8.0",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
             "enabled": false,
@@ -155,7 +155,7 @@
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
-        "version": "0.8.0",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
             "enabled": false,
@@ -186,11 +186,11 @@
       ]
     },
     "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\contracts\\Voting_Proxy.sol": {
-      "lastModificationDate": 1648569558013,
-      "contentHash": "70405128b44440c39e85ca252a737ebf",
+      "lastModificationDate": 1661523173655,
+      "contentHash": "df46129ed53cf3b20ed2457fb07d4c38",
       "sourceName": "contracts/Voting_Proxy.sol",
       "solcConfig": {
-        "version": "0.8.0",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
             "enabled": false,
@@ -216,18 +216,18 @@
         "./Voting_Storage.sol"
       ],
       "versionPragmas": [
-        "^0.8.0"
+        "0.8.4"
       ],
       "artifacts": [
         "VotingProxy"
       ]
     },
     "C:\\Users\\zjh90\\Desktop\\Dev\\VotingBooth\\Back-end\\contracts\\Voting_Booth.sol": {
-      "lastModificationDate": 1650390691685,
-      "contentHash": "27f9fc2c16b5f7f2ea7173a87e3db121",
+      "lastModificationDate": 1661523170516,
+      "contentHash": "6e80adcc6942ad04cf6cec7a66ce574b",
       "sourceName": "contracts/Voting_Booth.sol",
       "solcConfig": {
-        "version": "0.8.0",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
             "enabled": false,
@@ -253,7 +253,7 @@
         "./Voting_Storage.sol"
       ],
       "versionPragmas": [
-        "^0.8.0"
+        "0.8.4"
       ],
       "artifacts": [
         "VotingBooth"
