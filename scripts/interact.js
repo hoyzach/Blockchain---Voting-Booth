@@ -10,7 +10,7 @@ const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
 const contract = require("../artifacts/contracts/Voting_Proxy.sol/VotingProxy.json");
 
 //provider
-const nodeProvider = new ethers.providers.EtherscanProvider(network = "rinkeby", API_KEY);
+const nodeProvider = new ethers.providers.EtherscanProvider(network = "goerli", API_KEY);
 
 //Signers
 const owner = new ethers.Wallet(OWNER_KEY, nodeProvider);
@@ -49,7 +49,7 @@ async function main() {
     //await proxyAcct1.castVote(0,0);
     //await sleep(minetx);
 
-    //voters should not be able to vote in close categories
+    //voters should not be able to vote in closed categories
     //await proxyAcct1.register();
     //await sleep(minetx);
     //await proxyAcct1.castVote(0,0);
@@ -98,7 +98,6 @@ async function main() {
     //await sleep(minetx);
     //await proxyOwner.castVote(1,4);
     //await sleep(minetx);
-//----------------------------------------------------------------------------------------------
 
     //non-owners should not be able to pause the contract
     //await proxyAcct1.pause();
@@ -123,7 +122,7 @@ async function main() {
     //contract pointer should not be updated when contract is unpaused
     //await proxyOwner.unpause();
     //await sleep(minetx);
-    //await proxyOwner.upgrade("0x66c17554d8111920DBc0F8a5f83F11c61972684A");
+    //await proxyOwner.upgrade("0xB425673Bd30a200F83D9c9eBFdc3eC44F3B32B86");
     //await sleep(minetx);
 
     //non-owners should not be able to withdraw eth from the contract
@@ -142,7 +141,7 @@ async function main() {
     //owner should not be able to withdraw from an empty contract
     //await proxyOwner.withdraw();
     //await sleep(minetx);
-
+//----------------------------------------------------------------------------------------------
     //voters should not be able to send more than 1 castVote transaction at a time
     //proxyAcct1.castVote(1,1);
     //proxyAcct1.castVote(1,1);
